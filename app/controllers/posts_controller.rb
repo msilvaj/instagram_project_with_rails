@@ -12,6 +12,14 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def update
+    
+  end
+  
+  def delete
+    
+  end
+
   private
 
   def post_params
