@@ -1,4 +1,12 @@
-<% @posts.all.each do |post| %>
-<%= image_tag post.image.url(:medium) %>
-<%= post.caption %>
-<%end%>
+<div class="posts-wrapper row">
+  <% @posts.each do |post| %>
+  <div class="post"></div>
+  <div class="post-head"></div>
+  <div class="name"></div>
+  Ben Walker
+  <div class="image center-block"></div>
+  <%= link_to (image_tag post.image.url(:medium), class:'imgresponsive'), post_path(post) %>
+  <p class="caption"></p>
+  <%= post.caption %>
+  <%end%>
+</div>
