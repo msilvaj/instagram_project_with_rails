@@ -8,8 +8,10 @@
   <%= link_to (image_tag @post.image.url(:medium), class:'img-responsive'), post_path(@post) %>
   <p class="caption"></p>
   <%= @post.caption %>
+</div>
 
-  <div class="text-center">
-    <%= link_to "Cancel", posts_path%>
-  </div>
+<div class="text-center edit-links">
+  <%= link_to "Cancel", posts_path %>
+  |
+  <%= link_to "Edit Post", edit_post_path(@post) %>
 </div>
