@@ -21,6 +21,13 @@
     <%= link_to "Instabook", root_path %>
   </div>
   <br>
+
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+      <% end %>
+  </div>
+  
   <div class="collapse navbar-collapse" id="#bs-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
       <li>
@@ -33,8 +40,9 @@
       <%= link_to "Register", '#' %>
       </li>
     </ul>
-</nav>
+   </nav>
 </div>
+
     <%= yield %>
   </body>
 </html>
