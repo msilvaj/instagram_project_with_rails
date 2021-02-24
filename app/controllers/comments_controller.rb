@@ -5,9 +5,10 @@ class CommentsController < ApplicationController
         @comment = @post.comments.build(comment_params)
         @comment.user_id = current_user.id
         if @comment.save
-            flash[:success] = "This hell post was created"
-            redirect_back(fallback_location: root_path)
-
+            respond_to do |format|
+                format.html { redirect_to root_path }
+                format.js
+            end
         else
             flash[:alert] = "Failed to create post. Check the form"
             render root_path

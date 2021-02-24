@@ -1,13 +1,13 @@
-<div class="user-name">
-    <%= comment.user.user_name%>
-</div>
 <br>
-<div class="comment-content">
-    <%= comment.context %>
+<div class="container">
+<div class="col-lg-6">
+<%= comment.user.user_name%> - 
+<%= comment.context %>
 </div>
 <% if comment.user == current_user %>
-    <div class="text-center edit-links">
-        <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } do %>
+<div class="col-lg-3 ">
+-
+    <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } do %>
     <span class="glyphicon glyphicon-remove delete-comment-icon"></span>
 <% end %>
 </div>
