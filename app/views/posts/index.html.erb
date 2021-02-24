@@ -18,11 +18,14 @@
               <div class="user-name">
                 <%= comment.user.user_name%>
               </div>
+              <br>
               <div class="comment-content">
                 <%= comment.context %>
               </div>
               <% if comment.user == current_user %>
-                <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" }%>
+                <div class="text-center edit-links">
+                  <%= link_to "Delete Comment", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" }%>
+                </div>
               <% end %>
             </div>
           <%end%> 
@@ -37,9 +40,7 @@
     </div>    
 
   </div>
-  
   </div>
-
   <%end%>
 </div>
 
