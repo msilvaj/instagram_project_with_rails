@@ -18,8 +18,10 @@ class CommentsController < ApplicationController
     def destroy
         @comment = @post.comments.find(params[:id])
         @comment.destroy
-        flash[:success] = "This Hell Comment was success destroyed"
-        redirect_to root_path
+        respond_to do |format|
+            format.html { redirect_to root_path }
+            format.js
+        end
     end
 
     private
