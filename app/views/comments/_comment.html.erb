@@ -1,14 +1,14 @@
-<br>
-
-<div class="col-lg-6">
-<%= comment.user.user_name%> - 
-<%= comment.context %>
+<div id="comment">
+  <div class="user-name">
+    <%= comment.user.user_name %>
+  </div>
+  <div class="comment-content">
+    <%= comment.context %>
+  </div>
+  
+  <% if comment.user == current_user %>
+    <%= link_to post_comment_path(post, comment), method: :delete, data: {post_id: post.id, value: post.comments.count, confirm: "Are you sure?" }, remote: true, id: "delete-#{comment.id}", class: "delete-comment" do %>
+      <span class="glyphicon glyphicon-remove delete-comment-icon"></span>
+    <% end %>
+  <% end %>
 </div>
-<% if comment.user == current_user %>
-<div class="col-lg-6 ">
--
-    <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
-    <span class="glyphicon glyphicon-remove delete-comment-icon"></span>
-<% end %>
-</div>
-<% end %>
