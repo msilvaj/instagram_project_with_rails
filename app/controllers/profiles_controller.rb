@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :owned_profile, only: [:edit, :update]
+  before_action :authenticate_user!
+
 
   def show
     @user = User.find_by(user_name: params[:user_name])
