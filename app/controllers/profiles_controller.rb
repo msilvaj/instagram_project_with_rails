@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-  
+  before_action :owned_profile, only: [:edit, :update]
+
   def show
     @user = User.find_by(user_name: params[:user_name])
     @posts = User.find_by(user_name: params[:user_name]).posts.order('created_at DESC')
@@ -27,4 +28,11 @@ class ProfilesController < ApplicationController
     params.require(:user).permit(:avatar, :bio)
   end
 
+  def owned_profile
+    @user = User.find_by(user_name: params[:user_name])
+    unless current_user == @user
+      flash[:alert] = "That profile doesn't belong to you!"
+      redirect_to root_path
+    end
+  end
 end
